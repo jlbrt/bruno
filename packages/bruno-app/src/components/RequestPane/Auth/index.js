@@ -27,11 +27,18 @@ const Auth = ({ item, collection }) => {
     }
   };
 
+  const showOverrideWarning = item.draft.request.auth.mode !== 'none' && collection.root.request.auth.mode !== 'none';
+
   return (
     <StyledWrapper className="w-full mt-1">
       <div className="flex flex-grow justify-start items-center">
         <AuthMode item={item} collection={collection} />
       </div>
+
+      {showOverrideWarning && (
+        <p className="warning-text">Overrides the Auth setting of your collection for this request</p>
+      )}
+
       {getAuthView()}
     </StyledWrapper>
   );
