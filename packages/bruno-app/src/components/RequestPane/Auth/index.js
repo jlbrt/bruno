@@ -27,7 +27,8 @@ const Auth = ({ item, collection }) => {
     }
   };
 
-  const showOverrideWarning = item.draft.request.auth.mode !== 'none' && collection.root.request.auth.mode !== 'none';
+  const showOverrideWarning =
+    get(item, 'draft.request.auth.mode') !== 'none' && get(collection, 'root.request.auth.mode') !== 'none';
 
   return (
     <StyledWrapper className="w-full mt-1">
